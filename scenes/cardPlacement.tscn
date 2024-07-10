@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://oq1aqpjl57kh"]
+
+[ext_resource type="Texture2D" uid="uid://ckldujqerphn6" path="res://resources/card_placement.png" id="1_h4iwg"]
+[ext_resource type="Script" path="res://scripts/cardPlacement.gd" id="1_jgtej"]
+
+[node name="CardPlacement" type="MarginContainer"]
+custom_minimum_size = Vector2(64, 96)
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 0.178
+offset_right = -0.32
+offset_bottom = -0.120003
+size_flags_vertical = 4
+tooltip_text = "card placement"
+script = ExtResource("1_jgtej")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(32, 48)
+texture = ExtResource("1_h4iwg")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

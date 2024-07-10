@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://5qbpfvqkf4te"]
+
+[ext_resource type="PackedScene" uid="uid://bq53m2ird274w" path="res://scenes/card.tscn" id="1_7i7r3"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="PlayingHand" type="HBoxContainer" parent="."]
+offset_right = 268.0
+offset_bottom = 96.0
+
+[node name="Card" parent="PlayingHand" instance=ExtResource("1_7i7r3")]
+layout_mode = 2
+
+[node name="Card2" parent="PlayingHand" instance=ExtResource("1_7i7r3")]
+layout_mode = 2

@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwwpfj0kjnqwr"]
+
+[ext_resource type="Script" path="res://scripts/cardOnBoard.gd" id="1_kv2k1"]
+[ext_resource type="Texture2D" uid="uid://m7jjsyh7xsid" path="res://resources/card.png" id="2_xygby"]
+
+[sub_resource type="Animation" id="Animation_2rvcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(32, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x6kxv"]
+resource_name = "zoom_in"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_2u6f2"]
+resource_name = "zoom_out"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62bcr"]
+_data = {
+"RESET": SubResource("Animation_2rvcs"),
+"zoom_in": SubResource("Animation_x6kxv"),
+"zoom_out": SubResource("Animation_2u6f2")
+}
+
+[node name="CardOnBoard" type="MarginContainer"]
+custom_minimum_size = Vector2(64, 96)
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 0.178
+offset_right = -0.32
+offset_bottom = -0.120003
+tooltip_text = "card"
+mouse_default_cursor_shape = 2
+script = ExtResource("1_kv2k1")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(32, 48)
+texture = ExtResource("2_xygby")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_62bcr")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://mj2lylegqfdm"]
+
+[ext_resource type="Texture2D" uid="uid://m7jjsyh7xsid" path="res://resources/card.png" id="1_pkq8g"]
+[ext_resource type="Script" path="res://scripts/cardInHand.gd" id="2_ry128"]
+
+[node name="CardInHand" type="TextureRect"]
+mouse_filter = 2
+texture = ExtResource("1_pkq8g")
+script = ExtResource("2_ry128")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

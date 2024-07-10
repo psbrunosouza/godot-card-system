@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq53m2ird274w"]
+
+[ext_resource type="Texture2D" uid="uid://m7jjsyh7xsid" path="res://resources/card.png" id="1_r8jqt"]
+[ext_resource type="Script" path="res://scripts/card.gd" id="2_oivip"]
+
+[node name="Card" type="Container"]
+script = ExtResource("2_oivip")
+
+[node name="CardTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_r8jqt")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

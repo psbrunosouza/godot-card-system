@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://bq53m2ird274w"]
+
+[ext_resource type="Texture2D" uid="uid://m7jjsyh7xsid" path="res://resources/card.png" id="1_r8jqt"]
+[ext_resource type="Script" path="res://scripts/card.gd" id="2_oivip"]
+
+[sub_resource type="Animation" id="Animation_2rvcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cebky"]
+resource_name = "highlight-down"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -32), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gf60p"]
+resource_name = "highlight-up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62bcr"]
+_data = {
+"RESET": SubResource("Animation_2rvcs"),
+"highlight-down": SubResource("Animation_cebky"),
+"highlight-up": SubResource("Animation_gf60p")
+}
+
+[node name="Card" type="MarginContainer"]
+custom_minimum_size = Vector2(64, 96)
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 0.178
+offset_right = -0.32
+offset_bottom = -0.120003
+tooltip_text = "card"
+mouse_default_cursor_shape = 2
+script = ExtResource("2_oivip")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_r8jqt")
+centered = false
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_62bcr")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
